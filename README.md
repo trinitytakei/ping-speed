@@ -22,7 +22,7 @@ To paraphrase Peter Drucker, "You can't improve what you don't measure." Let's b
 
 When the user clicks the "Start Pinging!" button, the application sends a request to the server every second and displays the roundtrip time in milliseconds.
 
-How could we implement this tool using the Hotwire framework, using the least possible amount of custom Javascript?
+How could we implement this tool with Hotwire, using the least possible amount of custom Javascript?
 
 ## Solution
 
@@ -31,18 +31,18 @@ The first question we should be asking ourselves when implementing a feature wit
 The answer is provided in the introduction of the [Turbo Handbook](https://turbo.hotwired.dev/handbook/introduction):
 
 > it's not possible to call custom JavaScript functions as part of a Turbo Streams action.
-> Turbo focuses squarely on > just updating the DOM, and then assumes you'll connect any additional behavior using Stimulus actions and lifecycle callbacks.
+> Turbo focuses squarely on just updating the DOM, and then assumes you'll connect any additional behavior using Stimulus actions and lifecycle callbacks.
 
-In other words, Turbo's goal is to manage standard navigation (clicking links, submitting forms) and REST-style responses. If we need anything outside the standard request/response cycle, we need Stimulus.
+In other words, Turbo's goal is to manage standard navigation (clicking links, submitting forms) and REST-style responses. "Update the view every second" is outside the standard request/response cycle - Stimulus to the rescue!
 
-Let's start by creating the server-side view:
+Let's start by creating the view that will also contain the Stimulus sprinkles:
 
 ![Rails view implementation](./rails-view-annotated.png)
 
 Here's a rundown of the crucial parts:
 
-1) `data-controller` sets the scene - it tells Stimulus to monitor this section of the DOM tree. The attribute value `ping` means that the code will reside in a Stimulus controller named `ping_controller.js`.
-2) `data-action` uses a simple DSL to describe that if the element receives a `click` event, Stimulus will call the `start` function of the ping controller.
+1) `data-controller` sets the stage - it tells Stimulus to monitor this section of the DOM tree. The attribute value `ping` means that the code will reside in a Stimulus controller named `ping_controller.js`.
+2) `data-action` uses a simple DSL to describe that if the element receives a `click` event, Stimulus will call the `start` function of the `ping` controller.
 3) `data-ping-target` annotates elements of interest to the controller (typically input/output placeholders.) In this case, we marked two elements with `startElement` and `resultElement`. We'll se how are we going to use them in a second.
 
 Let's see the implementation of the Stimulus controller.

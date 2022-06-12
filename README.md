@@ -2,9 +2,9 @@
 
 Jakob Nielsen published his famous "response times" guideline almost thirty years ago in his groundbreaking book, [Usability Engineering](https://www.nngroup.com/books/usability-engineering/). He makes the following observations about application response time:
 
-* "less than 100 miliseconds: users feeling that they are directly manipulating objects in the UI"
-* "200 miliseconds - 1 second: users notice the delay and thus feel the computer is 'working' on the command"
-* "more than 1 second: [we need to] indicate to the user that the computer is working on the problem"
+> * less than 100 miliseconds: users feeling that they are directly manipulating objects in the UI
+> * 200 miliseconds - 1 second: users notice the delay and thus feel the computer is 'working' on the command
+> * more than 1 second: [we need to] indicate to the user that the computer is working on the problem
 
 It follows that speeding up application response time by hundreds of miliseconds can make a tangible difference to the end user.
 
@@ -40,23 +40,23 @@ Let's start by creating the server-side view:
 
 Her's a rundown of the important parts:
 
-1) `data-controller` sets the scene - it tells Stimulus to monitor this section of the DOM tree. The attribute value `ping` means that the code will reside in a Stimulus controller named `ping_controller.js`
-2) `data-action` uses a simple DSL to describe that if the element receives a `click` event, the `start` function of `ping_controller` should be called.
+1) `data-controller` sets the scene - it tells Stimulus to monitor this section of the DOM tree. The attribute value `ping` means that the code will reside in a Stimulus controller named `ping_controller.js`.
+2) `data-action` uses a simple DSL to describe that if the element receives a `click` event, the `start` function of `ping` controller should be called.
 3) `data-ping-target` annotates elements that are of interest to the controller (typically input/output placeholders.) In this case we marked two elements with `startElement` and `resultElement`. We'll se how are we going to use them in a second.
 
 Let's see the implementation of the Stimulus controller.
 
 ![Stimulus controller implementation](./stimulus-controller-annotated.png)
 
-1) If the user clicks the 'Start Pinging' button, we want to update the button text and disable the element to make it clear that measuring is in progress. We can do this in a simple and clean way using the Stimulus targets API; no need to use custom Javascript to locate the elements. We can reference the element by it's target name, `startElement`
-2) We are going to call the `measureAndDisplayPing` method every 100ms.
+1) If the user clicks the *Start Pinging* button, we want to update the button text and disable the element to make it clear that measuring is in progress. We can do this in a simple and clean way using the [Stimulus targets API](https://stimulus.hotwired.dev/reference/targets); no need to use custom Javascript to locate the elements. We can reference the element by it's target name, `startElement`
+2) We are going to call the `measureAndDisplayPing` method every second.
 3) We are making the call to the server, storing the current time before and after the request.
-4) We are calculating and displaying the roundtrip time, by updating the elementa annotated with `resultElement`.
-5) It's important to clean up after ourselves by calling `clearInverval()`. `disconnect()` is a perfect place to do so, as it's called automatically by Stimulus when the controller is disconnected[https://stimulus.hotwired.dev/reference/lifecycle-callbacks#disconnection].
+4) We are calculating and displaying the roundtrip time, by updating the element annotated with `resultElement`.
+5) It's important to clean up after ourselves by calling `clearInverval()`. `disconnect()` is a perfect place to do so, as it's called automatically by Stimulus when the [controller is disconnected](https://stimulus.hotwired.dev/reference/lifecycle-callbacks#disconnection).
 
 And finally, here's the implementation of the `PingController` that we called in step 3 above:
 
-![API Controller Implementation](./api-controller-implementation.png)
+![API Controller Implementation](./ping-api-controller.png)
 
 The controller does the least possible amount of work - just responding with `head: ok`. This is intentional, since we want to measure the network response time, and thus avoid talking to the database or perform any time-consuming action that would add extra time on top.
 

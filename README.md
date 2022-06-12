@@ -2,11 +2,11 @@
 
 Jakob Nielsen published his famous "response times" guideline almost thirty years ago in his groundbreaking book, [Usability Engineering](https://www.nngroup.com/books/usability-engineering/). He makes the following observations about application response time:
 
-> * less than 100 miliseconds: users feeling that they are directly manipulating objects in the UI
-> * 200 miliseconds - 1 second: users notice the delay and thus feel the computer is 'working' on the command
+> * less than 100 milliseconds: users feeling that they are directly manipulating objects in the UI
+> * 200 milliseconds - 1 second: users notice the delay and thus feel the computer is 'working' on the command
 > * more than 1 second: [we need to] indicate to the user that the computer is working on the problem
 
-It follows that speeding up application response time by hundreds of miliseconds can make a tangible difference to the end user.
+It follows that speeding up application response time by hundreds of milliseconds can make a tangible difference to the end user.
 
 ## Problem
 
@@ -20,7 +20,7 @@ To paraphrase Peter Drucker, "You can't improve what you don't measure." Let's b
 
 ![Self-serve ping tool demonstration](./self-serve-ping-tool-demo.gif)
 
-When the user clicks the "Start Pinging!" button, the application sends a request to the server every 100 miliseconds, and displays the roundtrip time in miliseconds.
+When the user clicks the "Start Pinging!" button, the application sends a request to the server every second, and displays the roundtrip time in milliseconds.
 
 How could we implement this tool using the Hotwire framework, using the least possible amount of custom Javascript?
 

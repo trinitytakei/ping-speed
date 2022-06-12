@@ -2,9 +2,9 @@
 
 Jakob Nielsen published his famous "response times" guideline almost thirty years ago in his groundbreaking book, [Usability Engineering](https://www.nngroup.com/books/usability-engineering/). He makes the following observations about application response time:
 
-> * less than 100 milliseconds: users feel that they are directly manipulating objects in the UI
-> * 200 milliseconds - 1 second: users notice the delay and thus feel the computer is 'working' on the command
-> * more than 1 second: [we need to] indicate to the user that the computer is working on the problem
+> * **less than 100 milliseconds**: users feel that they are directly manipulating objects in the UI
+> * **between 200 milliseconds - 1 second**: users notice the delay and thus feel the computer is 'working' on the command
+> * **more than 1 second**: [we need to] indicate to the user that the computer is working on the problem
 
 It follows that speeding up application response time by hundreds of milliseconds can make a tangible difference to the end-user.
 

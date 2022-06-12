@@ -16,7 +16,7 @@ However, in the case of an application using the [Hotwire framework](https://hot
 
 How can we ensure the best possible network response time for our application?
 
-To paraphrase Peter Drucker, "You can't improve what you don't measure." Let's build a tool that can measure the network latency (the roundtrip network time to get from the client to the server and back to the client):
+It all starts with measuring! To paraphrase Peter Drucker, "You can't improve what you don't measure." Let's build a tool that can measure the network latency (the roundtrip network time to get from the client to the server and back to the client):
 
 ![Self-serve ping tool demonstration](./self-serve-ping-tool-demo.gif)
 

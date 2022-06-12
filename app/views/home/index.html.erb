@@ -1,8 +1,7 @@
 <div data-controller="ping">
-  <%= button_tag "Start Pinging!",
-    data: {
-      action: 'click->ping#start'
-    }
-  %>
+
+  <button data-action="click->ping#start" data-ping-target="startElement">Start Pinging!</button>
+
   <div data-ping-target="resultElement" style="font-size: 120px;"></div>
+
 </div>

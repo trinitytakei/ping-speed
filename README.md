@@ -1,6 +1,6 @@
 # Measuring Network Latency Using the Hotwire Framework
 
-**This is a recipe about measuring network latency to demonstrate the impact of picking a fly.io region.** _I deployed the recipe presented below to various fly.io regions, and the difference was astounding: the latency for the nearest region was almost indistinguishable from the local environment (30-40ms). The same figure for regions far away: 300-400ms. Quite a difference!_
+**This is a recipe about measuring network latency to demonstrate the impact of picking a fly.io region.** _I deployed the recipe below to various fly.io regions, and the difference was astounding: the latency for the nearest region was almost indistinguishable from the local environment (30-40ms). The same figure for regions far away: 300-400ms. That's a game changer!_
 
 ---
 

@@ -1,5 +1,7 @@
 # Measuring Network Latency Using the Hotwire Framework
 
+**This is a recipe about measuring network latency to demonstrate the impact of picking a fly.io region.** _I deployed the recipe presented below to various fly.io regions, and the difference was astounding: the latency from the closest region was almost indistinguishable from the local environment (30-40ms). The same figure for regions far away: 300-400ms. Quite a difference!_
+
 Jakob Nielsen published his famous "response times" guideline almost thirty years ago in his groundbreaking book, [Usability Engineering](https://www.nngroup.com/books/usability-engineering/). He makes the following observations about application response time:
 
 > * **less than 100 milliseconds**: users feel that they are directly manipulating objects in the UI

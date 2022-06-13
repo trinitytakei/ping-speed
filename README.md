@@ -49,7 +49,7 @@ Let's see the implementation of the Stimulus controller.
 
 ![Stimulus controller implementation](./stimulus-controller-annotated.png)
 
-1) If the user clicks the *Start Pinging* button, we want to update the button text and disable the element to make it clear that measuring is in progress. We can do this simply and cleanly using the [Stimulus targets API](https://stimulus.hotwired.dev/reference/targets); no need to use custom Javascript to locate the elements. We can reference the element by its target name, `startElement`
+1) If the user clicks the *Start Pinging* button, we want to update the button text and disable the element to make it clear that measuring is in progress. We can do this simply and cleanly using the [Stimulus targets API](https://stimulus.hotwired.dev/reference/targets); no need to use custom Javascript to locate the elements. We can reference the element by its target name, `startElement`.
 2) We are going to call the `measureAndDisplayPing` method every second.
 3) We are making the call to the server, storing the current time before and after the request.
 4) We are calculating and displaying the roundtrip time by updating the element annotated with `resultElement`.
@@ -61,6 +61,8 @@ And finally, here's the implementation of the `PingController` that we called in
 
 The controller does the least possible amount of work - responding with `head: ok`. This is intentional: we want to measure the network response time and thus avoid talking to the database or performing any time-consuming action that would add extra time.
 
-## Discussion (optional)Discussion
+## Discussion
 
-???
+We can make our application more reactive using Hotwire, without the need to write custom Javascript most of the time. The above scenario was _not_ one of those cases - to accomplish our task, we had to write Javascript. As we demonstrated above, this is facilitated greatly by Stimulus. Convention over configuration and the simple but powerful syntax provided by the framework go a long way to keep our code clean and maintainable.
+
+If we would like to use this tool in the wild, we should consider slow connections (with network latency is greater than one second). One possible solution to solve this scenario: we could measure the response time on a couple of requests before starting the measurement, and adjust the ping frequency based on that. However, as a proof of concept, this solution is adequate to demonstrate the implementation with Hotwire/Stimulus.
